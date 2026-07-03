@@ -30,12 +30,14 @@ class Unit
     protected $virt_typ;
     protected $virt_position;
     protected $virt_behindert;
+    protected $virt_elektro;
     protected $flat_internet;
     protected $flat_terminal;
     protected $flat_locked;
     protected $flat_free;
     protected $flat_date;
     protected $flat_rent_date;
+    protected $flat_date_accepted;
     protected $flat_contract_date;
     protected $flat_contract_partner;
     protected $flat_contract_number;
@@ -43,12 +45,18 @@ class Unit
     protected $flat_arrangernr;
     protected $flat_arranger;
     protected $flat_rent;
+    protected $flat_rent_checked;
+    protected $flat_remarkOnTheRent;
     protected $flat_deposit;
+    protected $flat_rental_deposit;
     protected $flat_charges;
     protected $flat_heating;
     protected $flat_special;
     protected $flat_special_text;
+    protected $only_sale;
+    protected $only_pausch;
     protected $flat_wbs;
+    protected $flat_funding;
     protected $flat_wbs_note;
     protected $flat_note;
     protected $flat_note_print;
@@ -56,10 +64,19 @@ class Unit
     protected $flat_lights;
     protected $flat_image;
     protected $flat_image_titel;
+    protected $flat_image_alt;
     protected $flat_plot;
     protected $flat_plot_titel;
+    protected $flat_plot_alt;
     protected $flat_plot_2;
     protected $flat_plot_2_titel;
+    protected $flat_plot_2_alt;
+    protected $flat_plot_3;
+    protected $flat_plot_3_titel;
+    protected $flat_plot_3_alt;
+    protected $flat_plot_4;
+    protected $flat_plot_4_titel;
+    protected $flat_plot_4_alt;
     protected $flat_status;
     protected $flat_status_edit;
     protected $flat_technician;
@@ -136,15 +153,32 @@ class Unit
     protected $gw_tag2;
     protected $gw_tag3;
     protected $gw_tag4;
+    protected $gw_satz_person;
+    protected $gw_satz_person_nm;
+    protected $gw_satz_woche;
+    protected $gw_satz_woche_nm;
+    protected $gw_satz_monat;
+    protected $gw_satz_monat_nm;
+    protected $gw_satz_monat_pausch;
+    protected $gw_satz_monat_pausch_nm;
     protected $erp_note;
     protected $gw_satz;
     protected $gw_satz_nm;
+    protected $gw_satz_wochentag;
+    protected $gw_satz_nm_wochentag;
+    protected $gw_handtuch;
     protected $gw_waesche;
     protected $gw_extras;
     protected $gw_maxpers;
+    protected $gw_maxdays;
+    protected $gw_mindays;
+    protected $gw_kurzzeit;
     protected $gw_iban;
     protected $gw_rabatt;
+    protected $gw_rabatt_prozent;
+    protected $gw_zeiten_buchbar;
     protected $distanceAirport;
+    protected $numberOfRoommates;
     protected $distanceMRS;
     protected $distanceFM;
     protected $distancePT;
@@ -154,6 +188,11 @@ class Unit
     protected $havarie_ha;
     protected $havarie_photo;
     protected $havarie_bemerkung;
+    protected $havarie_telefon;
+    protected $havarie_breitband;
+    protected $havarie_dach;
+    protected $havarie_heizraum;
+    protected $havarie_schliess;
     protected $flat_instandh_einh;
     protected $leergrdtext;
     protected $portal_ausstattung;
@@ -166,44 +205,58 @@ class Unit
     protected $verantwortlich_6;
     protected $schluessel_leerzylinder;
     protected $schluessel_bauzylinder;
+    protected $schluessel_digitalzylinder;
     protected $iv_externalID;
     protected $amortisationsdauer;
     protected $amortisationsgrund;
     protected $amortisationsbemerkung;
     protected $flat_video_link;
+    protected $flat_360grad_link;
+    protected $flat_360grad_link_2;
     protected $flat_search_results_note;
-    protected $reserve_id;
-    protected $client_id;
-    protected $reserve_time;
-    protected $reserve_info;
-    protected $reserve_timestamp;
-    protected $reserve_author;
-    protected $reserve_time_real;
-    protected $insertdatum;
+    protected $web_counter;
+    protected $max_inquiries;
+    protected $release_from;
+    protected $release_to;
+    protected $heatingsystem_health;
+    protected $mediachanged;
+    protected $wowiport_flat_id;
+    protected $wowiport_building_id;
+    protected $wowiport_economic_id;
+    protected $wowinex_flat_id;
+    protected $wodis_flat_id;
+    protected $flat_coldrent;
+    protected $flat_exit_reason;
+    protected $flat_exit_reason_date;
+    protected $openimmo_specials;
+    protected $features;
+    protected $created;
+    protected $modified;
     protected $district_id;
     protected $district_name;
     protected $district_description;
     protected $district_marker;
     protected $district_desc_print;
     protected $district_list_print;
+    protected $district_search_ever;
     protected $district_city;
     protected $district_link;
-    protected $history_id;
+    protected $wowiport_district_id;
+    protected $client_id;
     protected $process_id;
     protected $termin_id;
     protected $acceptance_id;
     protected $letter_id;
+    protected $entwurf_id;
     protected $contract_id;
-    protected $history_headline;
-    protected $history_text;
-    protected $history_type;
-    protected $history_agent;
-    protected $history_team_id;
-    protected $history_object;
-    protected $history_objectid;
-    protected $history_timestamp;
+    protected $mail_id;
+    protected $notification_Id;
+    protected $catalog_id;
+    protected $approval_Id;
+    protected $message_Id;
     protected $favorit;
     protected $favorit_agent;
+    protected $sectionCRM;
     protected $export_id;
     protected $export_type;
     protected $export_date;
@@ -214,6 +267,8 @@ class Unit
     protected $we;
     protected $housenr;
     protected $bemerkung;
+    protected $houseboardManufacturer;
+    protected $houseboardId;
     protected $heizung_fremdanbieter;
     protected $hausansicht_hausprio;
     protected $rendite;
@@ -229,11 +284,14 @@ class Unit
     protected $id;
     protected $rent_all;
     protected $flat_prices;
+    protected $flat_price;
+    protected $flat_provision;
     protected $rent_plain;
     protected $rent;
     protected $charges;
     protected $heating;
     protected $deposit;
+    protected $rental_deposit;
     protected $extra;
     protected $flat_repair;
     protected $repair;
@@ -250,11 +308,12 @@ class Unit
     protected $zip;
     protected $city;
     protected $space;
+    protected $space_expose;
     protected $rooms;
+    protected $rooms_expose;
     protected $floor;
     protected $directionnr;
     protected $direction;
-    protected $arrangernr;
     protected $internet;
     protected $terminal;
     protected $date;
@@ -265,6 +324,7 @@ class Unit
     protected $contract_number;
     protected $arranger;
     protected $responsible;
+    protected $arrangernr;
     protected $special_text;
     protected $wbs;
     protected $wbs_note;
@@ -297,11 +357,11 @@ class Unit
     protected $plot;
     protected $environmet;
     protected $environment_detail_1;
-    protected $environment_int;
     protected $environment_raum;
     protected $environment_gemeinschaftl;
     protected $environment_umgebung;
     protected $environment_technik;
+    protected $web_specials;
     protected $environments;
     protected $arranger_name;
     protected $arranger_phone;
@@ -451,6 +511,11 @@ class Unit
         return $this->virt_behindert;
     }
 
+    public function getVirt_elektro()
+    {
+        return $this->virt_elektro;
+    }
+
     public function getFlat_internet()
     {
         return $this->flat_internet;
@@ -479,6 +544,11 @@ class Unit
     public function getFlat_rent_date()
     {
         return $this->flat_rent_date;
+    }
+
+    public function getFlat_date_accepted()
+    {
+        return $this->flat_date_accepted;
     }
 
     public function getFlat_contract_date()
@@ -516,9 +586,24 @@ class Unit
         return $this->flat_rent;
     }
 
+    public function getFlat_rent_checked()
+    {
+        return $this->flat_rent_checked;
+    }
+
+    public function getFlat_remarkOnTheRent()
+    {
+        return $this->flat_remarkOnTheRent;
+    }
+
     public function getFlat_deposit()
     {
         return $this->flat_deposit;
+    }
+
+    public function getFlat_rental_deposit()
+    {
+        return $this->flat_rental_deposit;
     }
 
     public function getFlat_charges()
@@ -541,9 +626,24 @@ class Unit
         return $this->flat_special_text;
     }
 
+    public function getOnly_sale()
+    {
+        return $this->only_sale;
+    }
+
+    public function getOnly_pausch()
+    {
+        return $this->only_pausch;
+    }
+
     public function getFlat_wbs()
     {
         return $this->flat_wbs;
+    }
+
+    public function getFlat_funding()
+    {
+        return $this->flat_funding;
     }
 
     public function getFlat_wbs_note()
@@ -581,6 +681,11 @@ class Unit
         return $this->flat_image_titel;
     }
 
+    public function getFlat_image_alt()
+    {
+        return $this->flat_image_alt;
+    }
+
     public function getFlat_plot()
     {
         return $this->flat_plot;
@@ -591,6 +696,11 @@ class Unit
         return $this->flat_plot_titel;
     }
 
+    public function getFlat_plot_alt()
+    {
+        return $this->flat_plot_alt;
+    }
+
     public function getFlat_plot_2()
     {
         return $this->flat_plot_2;
@@ -599,6 +709,41 @@ class Unit
     public function getFlat_plot_2_titel()
     {
         return $this->flat_plot_2_titel;
+    }
+
+    public function getFlat_plot_2_alt()
+    {
+        return $this->flat_plot_2_alt;
+    }
+
+    public function getFlat_plot_3()
+    {
+        return $this->flat_plot_3;
+    }
+
+    public function getFlat_plot_3_titel()
+    {
+        return $this->flat_plot_3_titel;
+    }
+
+    public function getFlat_plot_3_alt()
+    {
+        return $this->flat_plot_3_alt;
+    }
+
+    public function getFlat_plot_4()
+    {
+        return $this->flat_plot_4;
+    }
+
+    public function getFlat_plot_4_titel()
+    {
+        return $this->flat_plot_4_titel;
+    }
+
+    public function getFlat_plot_4_alt()
+    {
+        return $this->flat_plot_4_alt;
     }
 
     public function getFlat_status()
@@ -981,6 +1126,46 @@ class Unit
         return $this->gw_tag4;
     }
 
+    public function getGw_satz_person()
+    {
+        return $this->gw_satz_person;
+    }
+
+    public function getGw_satz_person_nm()
+    {
+        return $this->gw_satz_person_nm;
+    }
+
+    public function getGw_satz_woche()
+    {
+        return $this->gw_satz_woche;
+    }
+
+    public function getGw_satz_woche_nm()
+    {
+        return $this->gw_satz_woche_nm;
+    }
+
+    public function getGw_satz_monat()
+    {
+        return $this->gw_satz_monat;
+    }
+
+    public function getGw_satz_monat_nm()
+    {
+        return $this->gw_satz_monat_nm;
+    }
+
+    public function getGw_satz_monat_pausch()
+    {
+        return $this->gw_satz_monat_pausch;
+    }
+
+    public function getGw_satz_monat_pausch_nm()
+    {
+        return $this->gw_satz_monat_pausch_nm;
+    }
+
     public function getErp_note()
     {
         return $this->erp_note;
@@ -994,6 +1179,21 @@ class Unit
     public function getGw_satz_nm()
     {
         return $this->gw_satz_nm;
+    }
+
+    public function getGw_satz_wochentag()
+    {
+        return $this->gw_satz_wochentag;
+    }
+
+    public function getGw_satz_nm_wochentag()
+    {
+        return $this->gw_satz_nm_wochentag;
+    }
+
+    public function getGw_handtuch()
+    {
+        return $this->gw_handtuch;
     }
 
     public function getGw_waesche()
@@ -1011,6 +1211,21 @@ class Unit
         return $this->gw_maxpers;
     }
 
+    public function getGw_maxdays()
+    {
+        return $this->gw_maxdays;
+    }
+
+    public function getGw_mindays()
+    {
+        return $this->gw_mindays;
+    }
+
+    public function getGw_kurzzeit()
+    {
+        return $this->gw_kurzzeit;
+    }
+
     public function getGw_iban()
     {
         return $this->gw_iban;
@@ -1021,9 +1236,24 @@ class Unit
         return $this->gw_rabatt;
     }
 
+    public function getGw_rabatt_prozent()
+    {
+        return $this->gw_rabatt_prozent;
+    }
+
+    public function getGw_zeiten_buchbar()
+    {
+        return $this->gw_zeiten_buchbar;
+    }
+
     public function getDistanceAirport()
     {
         return $this->distanceAirport;
+    }
+
+    public function getNumberOfRoommates()
+    {
+        return $this->numberOfRoommates;
     }
 
     public function getDistanceMRS()
@@ -1069,6 +1299,31 @@ class Unit
     public function getHavarie_bemerkung()
     {
         return $this->havarie_bemerkung;
+    }
+
+    public function getHavarie_telefon()
+    {
+        return $this->havarie_telefon;
+    }
+
+    public function getHavarie_breitband()
+    {
+        return $this->havarie_breitband;
+    }
+
+    public function getHavarie_dach()
+    {
+        return $this->havarie_dach;
+    }
+
+    public function getHavarie_heizraum()
+    {
+        return $this->havarie_heizraum;
+    }
+
+    public function getHavarie_schliess()
+    {
+        return $this->havarie_schliess;
     }
 
     public function getFlat_instandh_einh()
@@ -1131,6 +1386,11 @@ class Unit
         return $this->schluessel_bauzylinder;
     }
 
+    public function getSchluessel_digitalzylinder()
+    {
+        return $this->schluessel_digitalzylinder;
+    }
+
     public function getIv_externalID()
     {
         return $this->iv_externalID;
@@ -1156,49 +1416,109 @@ class Unit
         return $this->flat_video_link;
     }
 
+    public function getFlat_360grad_link()
+    {
+        return $this->flat_360grad_link;
+    }
+
+    public function getFlat_360grad_link_2()
+    {
+        return $this->flat_360grad_link_2;
+    }
+
     public function getFlat_search_results_note()
     {
         return $this->flat_search_results_note;
     }
 
-    public function getReserve_id()
+    public function getWeb_counter()
     {
-        return $this->reserve_id;
+        return $this->web_counter;
     }
 
-    public function getClient_id()
+    public function getMax_inquiries()
     {
-        return $this->client_id;
+        return $this->max_inquiries;
     }
 
-    public function getReserve_time()
+    public function getRelease_from()
     {
-        return $this->reserve_time;
+        return $this->release_from;
     }
 
-    public function getReserve_info()
+    public function getRelease_to()
     {
-        return $this->reserve_info;
+        return $this->release_to;
     }
 
-    public function getReserve_timestamp()
+    public function getHeatingsystem_health()
     {
-        return $this->reserve_timestamp;
+        return $this->heatingsystem_health;
     }
 
-    public function getReserve_author()
+    public function getMediachanged()
     {
-        return $this->reserve_author;
+        return $this->mediachanged;
     }
 
-    public function getReserve_time_real()
+    public function getWowiport_flat_id()
     {
-        return $this->reserve_time_real;
+        return $this->wowiport_flat_id;
     }
 
-    public function getInsertdatum()
+    public function getWowiport_building_id()
     {
-        return $this->insertdatum;
+        return $this->wowiport_building_id;
+    }
+
+    public function getWowiport_economic_id()
+    {
+        return $this->wowiport_economic_id;
+    }
+
+    public function getWowinex_flat_id()
+    {
+        return $this->wowinex_flat_id;
+    }
+
+    public function getWodis_flat_id()
+    {
+        return $this->wodis_flat_id;
+    }
+
+    public function getFlat_coldrent()
+    {
+        return $this->flat_coldrent;
+    }
+
+    public function getFlat_exit_reason()
+    {
+        return $this->flat_exit_reason;
+    }
+
+    public function getFlat_exit_reason_date()
+    {
+        return $this->flat_exit_reason_date;
+    }
+
+    public function getOpenimmo_specials()
+    {
+        return $this->openimmo_specials;
+    }
+
+    public function getFeatures()
+    {
+        return $this->features;
+    }
+
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    public function getModified()
+    {
+        return $this->modified;
     }
 
     public function getDistrict_id()
@@ -1231,6 +1551,11 @@ class Unit
         return $this->district_list_print;
     }
 
+    public function getDistrict_search_ever()
+    {
+        return $this->district_search_ever;
+    }
+
     public function getDistrict_city()
     {
         return $this->district_city;
@@ -1241,9 +1566,14 @@ class Unit
         return $this->district_link;
     }
 
-    public function getHistory_id()
+    public function getWowiport_district_id()
     {
-        return $this->history_id;
+        return $this->wowiport_district_id;
+    }
+
+    public function getClient_id()
+    {
+        return $this->client_id;
     }
 
     public function getProcess_id()
@@ -1266,49 +1596,39 @@ class Unit
         return $this->letter_id;
     }
 
+    public function getEntwurf_id()
+    {
+        return $this->entwurf_id;
+    }
+
     public function getContract_id()
     {
         return $this->contract_id;
     }
 
-    public function getHistory_headline()
+    public function getMail_id()
     {
-        return $this->history_headline;
+        return $this->mail_id;
     }
 
-    public function getHistory_text()
+    public function getNotification_Id()
     {
-        return $this->history_text;
+        return $this->notification_Id;
     }
 
-    public function getHistory_type()
+    public function getCatalog_id()
     {
-        return $this->history_type;
+        return $this->catalog_id;
     }
 
-    public function getHistory_agent()
+    public function getApproval_Id()
     {
-        return $this->history_agent;
+        return $this->approval_Id;
     }
 
-    public function getHistory_team_id()
+    public function getMessage_Id()
     {
-        return $this->history_team_id;
-    }
-
-    public function getHistory_object()
-    {
-        return $this->history_object;
-    }
-
-    public function getHistory_objectid()
-    {
-        return $this->history_objectid;
-    }
-
-    public function getHistory_timestamp()
-    {
-        return $this->history_timestamp;
+        return $this->message_Id;
     }
 
     public function getFavorit()
@@ -1319,6 +1639,11 @@ class Unit
     public function getFavorit_agent()
     {
         return $this->favorit_agent;
+    }
+
+    public function getSectionCRM()
+    {
+        return $this->sectionCRM;
     }
 
     public function getExport_id()
@@ -1369,6 +1694,16 @@ class Unit
     public function getBemerkung()
     {
         return $this->bemerkung;
+    }
+
+    public function getHouseboardManufacturer()
+    {
+        return $this->houseboardManufacturer;
+    }
+
+    public function getHouseboardId()
+    {
+        return $this->houseboardId;
     }
 
     public function getHeizung_fremdanbieter()
@@ -1446,6 +1781,16 @@ class Unit
         return $this->flat_prices;
     }
 
+    public function getFlat_price()
+    {
+        return $this->flat_price;
+    }
+
+    public function getFlat_provision()
+    {
+        return $this->flat_provision;
+    }
+
     public function getRent_plain()
     {
         return $this->rent_plain;
@@ -1469,6 +1814,11 @@ class Unit
     public function getDeposit()
     {
         return $this->deposit;
+    }
+
+    public function getRental_deposit()
+    {
+        return $this->rental_deposit;
     }
 
     public function getExtra()
@@ -1551,9 +1901,19 @@ class Unit
         return $this->space;
     }
 
+    public function getSpace_expose()
+    {
+        return $this->space_expose;
+    }
+
     public function getRooms()
     {
         return $this->rooms;
+    }
+
+    public function getRooms_expose()
+    {
+        return $this->rooms_expose;
     }
 
     public function getFloor()
@@ -1569,11 +1929,6 @@ class Unit
     public function getDirection()
     {
         return $this->direction;
-    }
-
-    public function getArrangernr()
-    {
-        return $this->arrangernr;
     }
 
     public function getInternet()
@@ -1624,6 +1979,11 @@ class Unit
     public function getResponsible()
     {
         return $this->responsible;
+    }
+
+    public function getArrangernr()
+    {
+        return $this->arrangernr;
     }
 
     public function getSpecial_text()
@@ -1786,11 +2146,6 @@ class Unit
         return $this->environment_detail_1;
     }
 
-    public function getEnvironment_int()
-    {
-        return $this->environment_int;
-    }
-
     public function getEnvironment_raum()
     {
         return $this->environment_raum;
@@ -1809,6 +2164,11 @@ class Unit
     public function getEnvironment_technik()
     {
         return $this->environment_technik;
+    }
+
+    public function getWeb_specials()
+    {
+        return $this->web_specials;
     }
 
     public function getEnvironments()
